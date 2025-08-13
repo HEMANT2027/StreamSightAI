@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 import threading
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
@@ -108,6 +109,21 @@ except Exception as e:
     chat_history_collection = None
 
 app = FastAPI(title="Multimodal Chat API")
+
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",       # Local dev
+        "https://streamsightai.onrender.com"  # Production frontend
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
+
+
 
 def initialize_gemini_model(api_key):
     try:
