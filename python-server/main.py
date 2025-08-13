@@ -58,7 +58,7 @@ class APIKeyManager:
             self.key_usage_count[primary_key] = 0
         key_index = 2
         while True:
-            key = os.getenv(f"GEMINI_API_KEY_{key_index}")
+            key = os.getenv(f"GEMINI_API_KEY")
             if not key:
                 break
             self.api_keys.append(key)
