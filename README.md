@@ -68,6 +68,7 @@ This system is designed for enterprise-grade applications, featuring intelligent
 ```bash
 git clone <your-repository-url>
 cd <repository-directory>
+cd python-server
 ```
 
 ### 2. Create Virtual Environment
@@ -92,7 +93,7 @@ pip install -r requirements.txt
 
 ### 4. Environment Configuration
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the `python-server` directory:
 
 ```env
 # Add your Google Gemini API keys
@@ -106,6 +107,8 @@ GEMINI_API_KEY_3="AIzaSy...your...third...key"
 > **Security Note:** Never commit your `.env` file to version control. Add it to your `.gitignore`.
 
 ### 5. Run the Application
+
+From the `python-server` directory:
 
 ```bash
 python main.py
@@ -247,12 +250,15 @@ curl -X POST "http://localhost:9000/infer" \
 
 ```
 project-root/
-├── main.py                 # Application entry point
-├── requirements.txt        # Python dependencies
-├── .env                   # Environment variables (create this)
-├── .gitignore            # Git ignore rules
-├── chat_api.log          # Application logs (auto-generated)
-└── chroma_db/            # ChromaDB storage (auto-generated)
+├── python-server/          # Backend API server
+│   ├── main.py            # Application entry point
+│   ├── requirements.txt   # Python dependencies
+│   ├── .env              # Environment variables (create this)
+│   ├── .gitignore        # Git ignore rules
+│   ├── chat_api.log      # Application logs (auto-generated)
+│   └── chroma_db/        # ChromaDB storage (auto-generated)
+│       └── ...
+└── frontend/              # Frontend application
     └── ...
 ```
 
