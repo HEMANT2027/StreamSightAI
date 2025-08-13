@@ -1,4 +1,4 @@
-# 🚀 Enterprise-Grade Multimodal Chat API
+# Enterprise-Grade Multimodal Chat API
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
@@ -7,43 +7,43 @@
 
 A high-performance, resilient, and intelligent multimodal chat API that leverages **Google's Gemini 2.0 Flash** for state-of-the-art multimodal understanding, **FastAPI** for high-speed asynchronous web framework, and **ChromaDB** for persistent, context-aware conversation memory.
 
-## 🌟 Overview
+## Overview
 
 This system is designed for enterprise-grade applications, featuring intelligent API key rotation, robust error handling with automatic retries, optimized video processing, and comprehensive logging. Perfect for building AI-powered applications that need to understand and respond to both text and visual content.
 
-## ✨ Key Features
+## Key Features
 
-### 🧠 **Intelligent API Key Management**
+### **Intelligent API Key Management**
 - Automatic rotation of Gemini API key pools to prevent rate-limiting
 - High availability with usage and failure statistics tracking
 - Smart fallback mechanisms for uninterrupted service
 
-### 💾 **Context-Aware Memory**
+### **Context-Aware Memory**
 - ChromaDB vector database for persistent conversation storage
 - Semantic similarity search for relevant context retrieval
 - Intelligent follow-up responses based on conversation history
 
-### 🚀 **High-Performance Architecture**
+### **High-Performance Architecture**
 - FastAPI with asynchronous request handling
 - Uvicorn ASGI server with asyncio event loop
 - Concurrent request processing without blocking
 
-### 🎬 **Advanced Multimodal Processing**
+### **Advanced Multimodal Processing**
 - Optimized video and image processing pipeline
 - Intelligent frame extraction and resizing
 - Support for multiple media formats
 
-### 🔄 **Enterprise-Grade Resilience**
+### **Enterprise-Grade Resilience**
 - Exponential backoff retry mechanism
 - Automatic API key rotation on rate limits
 - Comprehensive error handling and recovery
 
-### 📊 **Monitoring & Analytics**
+### **Monitoring & Analytics**
 - Real-time usage statistics and health monitoring
 - Detailed logging to file and console
 - API key performance metrics
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Component | Technology |
 |-----------|------------|
@@ -55,13 +55,13 @@ This system is designed for enterprise-grade applications, featuring intelligent
 | **Async Processing** | asyncio, ThreadPoolExecutor |
 | **Configuration** | python-dotenv |
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Python 3.8 or higher
 - Google Gemini API keys
 - Virtual environment (recommended)
 
-## ⚙️ Installation
+## Installation
 
 ### 1. Clone the Repository
 
@@ -103,7 +103,7 @@ GEMINI_API_KEY_3="AIzaSy...your...third...key"
 # Add as many keys as you have for better load distribution
 ```
 
-> **⚠️ Security Note:** Never commit your `.env` file to version control. Add it to your `.gitignore`.
+> **Security Note:** Never commit your `.env` file to version control. Add it to your `.gitignore`.
 
 ### 5. Run the Application
 
@@ -116,8 +116,8 @@ You should see output similar to:
 ```
 INFO:     Started server process [12345]
 INFO:     Waiting for application startup.
-INFO:     🎬 Starting Multimodal Chat API server...
-INFO:     🔧 Server Configuration:
+INFO:     Starting Multimodal Chat API server...
+INFO:     Server Configuration:
 INFO:        - Host: localhost
 INFO:        - Port: 9000
 INFO:     Uvicorn running on http://localhost:9000
@@ -125,9 +125,9 @@ INFO:     Uvicorn running on http://localhost:9000
 
 The API is now available at `http://localhost:9000`
 
-## 📡 API Endpoints
+## API Endpoints
 
-### 🏥 Health Check
+### Health Check
 
 **Endpoint:** `GET /`
 
@@ -141,7 +141,7 @@ The API is now available at `http://localhost:9000`
 }
 ```
 
-### 📊 Analytics Dashboard
+### Analytics Dashboard
 
 **Endpoint:** `GET /stats`
 
@@ -166,7 +166,7 @@ The API is now available at `http://localhost:9000`
 }
 ```
 
-### 🤖 Multimodal Inference
+### Multimodal Inference
 
 **Endpoint:** `POST /infer`
 
@@ -177,7 +177,7 @@ The API is now available at `http://localhost:9000`
 - `video_file` (file, optional): Image or video file for analysis
 - `session_id` (string, optional): Conversation thread identifier
 
-## 💡 Usage Examples
+## Usage Examples
 
 ### Text-Only Query
 
@@ -222,7 +222,7 @@ curl -X POST "http://localhost:9000/infer" \
   -F "session_id=ml_discussion"
 ```
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -243,7 +243,7 @@ curl -X POST "http://localhost:9000/infer" \
                        └─────────────────┘
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 project-root/
@@ -256,7 +256,7 @@ project-root/
     └── ...
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -272,7 +272,7 @@ project-root/
 - **Images:** JPG, JPEG, PNG, GIF, BMP, TIFF
 - **Videos:** MP4, AVI, MOV, WMV, FLV, MKV
 
-## 🚨 Error Handling
+## Error Handling
 
 The API implements comprehensive error handling:
 
@@ -281,7 +281,7 @@ The API implements comprehensive error handling:
 - **Invalid Files:** Graceful error messages
 - **API Failures:** Fallback mechanisms
 
-## 📈 Performance Optimization
+## Performance Optimization
 
 - Asynchronous request processing
 - Thread pool for CPU-intensive tasks
@@ -289,7 +289,7 @@ The API implements comprehensive error handling:
 - Vector similarity caching
 - Connection pooling
 
-## 🔐 Security Considerations
+## Security Considerations
 
 - API key rotation for security
 - Input validation and sanitization
@@ -297,7 +297,7 @@ The API implements comprehensive error handling:
 - Rate limiting protection
 - Secure environment variable handling
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -321,7 +321,7 @@ Solution: Check file format and size limitations
 Solution: Change PORT in .env or kill existing process
 ```
 
-## 📝 Logging
+## Logging
 
 Logs are written to:
 - **Console:** Real-time monitoring
@@ -329,7 +329,7 @@ Logs are written to:
 
 Log levels: DEBUG, INFO, WARNING, ERROR, CRITICAL
 
-## 🚀 Deployment
+## Deployment
 
 For production deployment:
 
@@ -339,7 +339,7 @@ For production deployment:
 4. Set up monitoring and alerting
 5. Configure SSL/TLS certificates
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -347,11 +347,11 @@ For production deployment:
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Google AI for Gemini 2.0 Flash
 - FastAPI team for the excellent framework
@@ -360,4 +360,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ for the AI community**
+**Made with care for the AI community**
