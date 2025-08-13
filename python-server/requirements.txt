@@ -1,8 +1,10 @@
+opencv-python
 fastapi
-uvicorn[standard]
-python-dotenv
-google-generativeai
-opencv-python-headless
-numpy
+pydantic
+google.generativeai
 chromadb
-python-multipart  # Needed for FastAPI file uploads
+numpy
+uvicorn
+gunicorn
+python-multipart
+python-dotenv
