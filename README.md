@@ -67,7 +67,7 @@ This system is designed for enterprise-grade applications, featuring intelligent
 
 ![Demo Preview](./assets/demo.gif)
 
-[▶ Watch Full Video on YouTube](https://drive.google.com/drive/folders/1XLz8lsHVspxBN6fAAlWQkKkp88FRPl9S?usp=sharing)
+[▶ Watch Full Video ](https://drive.google.com/drive/folders/1XLz8lsHVspxBN6fAAlWQkKkp88FRPl9S?usp=sharing)
 
 
 
