@@ -61,6 +61,16 @@ This system is designed for enterprise-grade applications, featuring intelligent
 - Google Gemini API keys
 - Virtual environment (recommended)
 
+
+
+## 🎥 Project Demo
+
+![Demo Preview](./assets/demo.gif)
+
+[▶ Watch Full Video on YouTube](https://drive.google.com/drive/folders/1XLz8lsHVspxBN6fAAlWQkKkp88FRPl9S?usp=sharing)
+
+
+
 ## Installation
 
 ### 1. Clone the Repository
