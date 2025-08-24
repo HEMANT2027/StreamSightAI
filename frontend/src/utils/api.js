@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base URL for your backend API
-const BASE_URL = 'https://streamsightai.onrender.com';
+const BASE_URL = 'http://localhost:9000';
 
 // Create axios instance with default config
 const api = axios.create({
@@ -12,11 +12,21 @@ const api = axios.create({
 // Request interceptor for logging
 api.interceptors.request.use(
   (config) => {
-    console.log(`Making API request to: ${config.url}`);
+    console.log(`🚀 Making API request to: ${config.url}`);
+    if (config.data instanceof FormData) {
+      console.log('📋 FormData contents:');
+      for (let [key, value] of config.data.entries()) {
+        if (value instanceof File) {
+          console.log(`  ${key}: ${value.name} (${value.size} bytes)`);
+        } else {
+          console.log(`  ${key}: ${value}`);
+        }
+      }
+    }
     return config;
   },
   (error) => {
-    console.error('Request error:', error);
+    console.error('❌ Request error:', error);
     return Promise.reject(error);
   }
 );
@@ -24,13 +34,22 @@ api.interceptors.request.use(
 // Response interceptor for error handling
 api.interceptors.response.use(
   (response) => {
+    console.log('✅ API Response received:', typeof response.data);
     return response;
   },
   (error) => {
-    console.error('API Error:', error.response?.data || error.message);
+    console.error('❌ API Error:', error.response?.data || error.message);
     return Promise.reject(error);
   }
 );
+
+/**
+ * Generate a unique session ID
+ * @returns {string}
+ */
+const generateSessionId = () => {
+  return 'session_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+};
 
 /**
  * Send a message to the chatbot with optional video file
@@ -41,36 +60,48 @@ api.interceptors.response.use(
  */
 export const sendMessage = async (prompt, videoFile = null, sessionId = null) => {
   try {
-    const formData = new FormData();
-    formData.append('prompt', prompt);
-    
-    if (videoFile) {
-      formData.append('video', videoFile);
-    }
-    
-    if (sessionId) {
-      formData.append('session_id', sessionId);
-    }
-
-    const response = await api.post('/infer', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+    console.log('🎯 sendMessage called:', { 
+      prompt: prompt.substring(0, 50) + '...', 
+      hasVideo: !!videoFile, 
+      sessionId 
     });
 
+    // Create session ID if not provided
+    const currentSessionId = sessionId || generateSessionId();
+    
+    const formData = new FormData();
+    formData.append('prompt', prompt);
+    formData.append('session_id', currentSessionId); // Always send session_id
+    
+    // ⚠️ CRITICAL FIX: Use 'video_file' instead of 'video' to match backend
+    if (videoFile) {
+      formData.append('video_file', videoFile); // Changed from 'video' to 'video_file'
+      console.log('📎 Video file attached:', videoFile.name, videoFile.size, 'bytes');
+    }
+
+    // Don't set Content-Type header explicitly - let axios handle it
+    const response = await api.post('/api/v1/infer', formData);
+
+    console.log('✅ API Response successful');
+
+    // ⚠️ CRITICAL FIX: Your backend returns PlainTextResponse, not JSON
+    const responseText = typeof response.data === 'string' 
+      ? response.data 
+      : JSON.stringify(response.data);
+
     return {
-      response: response.data,
-      sessionId: sessionId || generateSessionId(),
+      response: responseText,
+      sessionId: currentSessionId,
     };
   } catch (error) {
-    console.error('Error sending message:', error);
+    console.error('❌ Error sending message:', error);
     
     // Handle different types of errors
     if (error.response) {
       // Server responded with error status
       const status = error.response.status;
       const message = error.response.data?.detail || error.response.data || 'Server error';
-      throw new Error(`Request failed: ${message}`);
+      throw new Error(`Request failed (${status}): ${message}`);
     } else if (error.code === 'ECONNABORTED') {
       // Timeout error
       throw new Error('Request timeout. Please try again.');
@@ -79,7 +110,7 @@ export const sendMessage = async (prompt, videoFile = null, sessionId = null) =>
       throw new Error('Network error. Please check your connection.');
     } else {
       // Other errors
-      throw new Error('An unexpected error occurred.');
+      throw new Error(`An unexpected error occurred: ${error.message}`);
     }
   }
 };
@@ -90,20 +121,14 @@ export const sendMessage = async (prompt, videoFile = null, sessionId = null) =>
  */
 export const checkServerHealth = async () => {
   try {
+    console.log('💚 Checking server health...');
     const response = await api.get('/', { timeout: 5000 });
+    console.log('✅ Server health check passed:', response.data);
     return response.data.status === 'ok';
   } catch (error) {
-    console.error('Health check failed:', error);
+    console.error('❌ Health check failed:', error);
     return false;
   }
-};
-
-/**
- * Generate a unique session ID
- * @returns {string}
- */
-const generateSessionId = () => {
-  return 'session_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
 };
 
 /**
@@ -116,19 +141,33 @@ export const validateVideoFile = (file) => {
     return { isValid: false, error: 'No file provided' };
   }
 
-  // Basic file type check - accept any file type
+  // Check file size (limit to 100MB)
+  const maxSize = 100 * 1024 * 1024; // 100MB
+  if (file.size > maxSize) {
+    return { 
+      isValid: false, 
+      error: 'File size too large. Please upload a video smaller than 100MB.' 
+    };
+  }
+
+  // Basic file type check
   const fileName = file.name.toLowerCase();
-  const hasVideoExtension = fileName.includes('.mp4') || fileName.includes('.avi') || 
-                           fileName.includes('.mov') || fileName.includes('.wmv') || 
-                           fileName.includes('.flv') || fileName.includes('.webm') || 
-                           fileName.includes('.mkv') || file.type.startsWith('video/');
+  const videoExtensions = ['.mp4', '.avi', '.mov', '.wmv', '.flv', '.webm', '.mkv', '.m4v'];
+  const hasVideoExtension = videoExtensions.some(ext => fileName.endsWith(ext)) || 
+                           file.type.startsWith('video/');
   
   if (!hasVideoExtension) {
     return { 
       isValid: false, 
-      error: 'Please upload a video file' 
+      error: 'Please upload a video file (mp4, avi, mov, wmv, flv, webm, mkv, m4v)' 
     };
   }
+
+  console.log('✅ Video file validation passed:', {
+    name: file.name,
+    size: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
+    type: file.type
+  });
 
   return { isValid: true, error: null };
 };
