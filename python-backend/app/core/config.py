@@ -27,7 +27,12 @@ class Settings(BaseSettings):
     target_fps: int = 1
     
     # CORS settings
-    allowed_origins: list = ["http://localhost:5173"]
+    # after
+    allowed_origins: list = [
+        "http://localhost:5173",               # local dev
+        "https://stream-sight-ai.vercel.app"   # production frontend
+    ]
+
     
     class Config:
         env_file = ".env"
