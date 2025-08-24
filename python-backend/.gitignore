@@ -67,7 +67,7 @@ __pycache__/
 data/
 datasets/
 outputs/
-models/
+# models/
 cache/
 tmp/
 *.ipynb_checkpoints
