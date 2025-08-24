@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     # App settings
     app_name: str = "Multimodal Chat API"
     version: str = "1.0.0"
-    host: str = "localhost"
+    host: str = "0.0.0.0"
     port: int = 9000
     
     # Database settings
