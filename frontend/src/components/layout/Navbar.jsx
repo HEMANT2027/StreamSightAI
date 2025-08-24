@@ -91,7 +91,7 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a href='https://github.com/MantraHackathon' target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 font-medium text-[15px] transition-colors duration-300 relative group">
+              <a href='https://github.com/kunalverma2512/StreamSightAI' target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 font-medium text-[15px] transition-colors duration-300 relative group">
                 Source Code
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
               </a>
