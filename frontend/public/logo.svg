@@ -1,0 +1,9 @@
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>StreamSightAI Logo (Monochrome)</title>
+  <desc>A line representing a data stream enters a prism shape and exits as three distinct, structured lines.</desc>
+  <path d="M10 20H40" stroke="currentColor" stroke-width="2"/>
+  <path d="M50 5L70 20L50 35L50 5Z" fill="currentColor"/>
+  <path d="M80 12H110" stroke="currentColor" stroke-width="2"/>
+  <path d="M80 20H110" stroke="currentColor" stroke-width="2"/>
+  <path d="M80 28H110" stroke="currentColor" stroke-width="2"/>
+</svg>
