@@ -1,151 +1,195 @@
-# Enterprise-Grade Multimodal Chat API
+# StreamSightAI 🎬
 
-[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![Python](https://img.shields.io/badge/python-3.8+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
-[![Gemini](https://img.shields.io/badge/Google_Gemini-8E75B2?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
-[![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6B35?style=for-the-badge)](https://www.trychroma.com/)
+**Enterprise-Grade Multimodal AI Chat Platform for Video & Image Analysis**
 
-A high-performance, resilient, and intelligent multimodal chat API that leverages **Google's Gemini 2.0 Flash** for state-of-the-art multimodal understanding, **FastAPI** for high-speed asynchronous web framework, and **ChromaDB** for persistent, context-aware conversation memory.
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-stream--sight--ai.vercel.app-blue?style=for-the-badge)](https://stream-sight-ai.vercel.app)
+[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![React](https://img.shields.io/badge/React-19.1-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![Google AI](https://img.shields.io/badge/Google-Gemini_2.0_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev)
 
-## Overview
+> **StreamSightAI** is a cutting-edge multimodal AI platform that enables intelligent conversations about videos and images. Powered by Google's Gemini 2.0 Flash, it provides real-time analysis, context-aware responses, and enterprise-grade reliability for multimedia content understanding.
 
-This system is designed for enterprise-grade applications, featuring intelligent API key rotation, robust error handling with automatic retries, optimized video processing, and comprehensive logging. Perfect for building AI-powered applications that need to understand and respond to both text and visual content.
+---
 
-## Key Features
+## ✨ Key Features
 
-### **Intelligent API Key Management**
-- Automatic rotation of Gemini API key pools to prevent rate-limiting
-- High availability with usage and failure statistics tracking
-- Smart fallback mechanisms for uninterrupted service
+### 🧠 **Advanced AI Capabilities**
+- **Multimodal Understanding**: Analyze videos, images, and text simultaneously
+- **Context-Aware Conversations**: ChromaDB-powered memory for intelligent follow-ups
+- **Real-time Processing**: Optimized frame extraction and analysis pipeline
+- **Semantic Search**: Vector-based context retrieval for relevant responses
 
-### **Context-Aware Memory**
-- ChromaDB vector database for persistent conversation storage
-- Semantic similarity search for relevant context retrieval
-- Intelligent follow-up responses based on conversation history
+### ⚡ **Enterprise Architecture**
+- **Intelligent API Key Rotation**: Automatic failover and load balancing
+- **High-Performance Backend**: FastAPI with async/await patterns
+- **Scalable Infrastructure**: Thread pools and connection pooling
+- **Robust Error Handling**: Exponential backoff and graceful degradation
 
-### **High-Performance Architecture**
-- FastAPI with asynchronous request handling
-- Uvicorn ASGI server with asyncio event loop
-- Concurrent request processing without blocking
+### 🔧 **Production-Ready Features**
+- **Real-time Health Monitoring**: System stats and performance metrics
+- **Comprehensive Logging**: File and console logging with multiple levels
+- **Secure Configuration**: Environment-based secrets management
+- **CORS Support**: Cross-origin requests for web deployment
 
-### **Advanced Multimodal Processing**
-- Optimized video and image processing pipeline
-- Intelligent frame extraction and resizing
-- Support for multiple media formats
+---
 
-### **Enterprise-Grade Resilience**
-- Exponential backoff retry mechanism
-- Automatic API key rotation on rate limits
-- Comprehensive error handling and recovery
+## 🏗️ System Architecture
 
-### **Monitoring & Analytics**
-- Real-time usage statistics and health monitoring
-- Detailed logging to file and console
-- API key performance metrics
-
-## Tech Stack
-
-| Component | Technology |
-|-----------|------------|
-| **Backend Framework** | FastAPI |
-| **Web Server** | Uvicorn |
-| **AI Model** | Google Gemini 2.0 Flash |
-| **Vector Database** | ChromaDB |
-| **Media Processing** | OpenCV, NumPy |
-| **Async Processing** | asyncio, ThreadPoolExecutor |
-| **Configuration** | python-dotenv |
-
-## Prerequisites
-
-- Python 3.8 or higher
-- Google Gemini API keys
-- Virtual environment (recommended)
-
-
-
-## 🎥 Project Demo
-
-![Demo Preview](./assets/demo.gif)
-
-[▶ Watch Full Video ](https://drive.google.com/drive/folders/1XLz8lsHVspxBN6fAAlWQkKkp88FRPl9S?usp=sharing)
-
-
-
-## Installation
-
-### 1. Clone the Repository
-
-```bash
-git clone <your-repository-url>
-cd <repository-directory>
-cd python-server
+```mermaid
+graph TB
+    A[React Frontend] --> B[FastAPI Backend]
+    B --> C[Google Gemini 2.0]
+    B --> D[ChromaDB Vector Store]
+    B --> E[OpenCV Media Pipeline]
+    F[API Key Manager] --> C
+    G[Session Management] --> D
+    H[Video Processor] --> E
+    
+    style A fill:#61DAFB
+    style B fill:#009688
+    style C fill:#4285F4
+    style D fill:#FF6B6B
+    style E fill:#FF8C00
 ```
 
-### 2. Create Virtual Environment
-
-**macOS/Linux:**
-```bash
-python3 -m venv venv
-source venv/bin/activate
+### **Data Flow Architecture**
+```
+┌─────────────────┐    HTTP/Multipart     ┌─────────────────┐
+│   React Client  │◄─────────────────────►│  FastAPI Server │
+│                 │                       │                 │
+└─────────────────┘                       └─────────┬───────┘
+                                                    │
+                                          ┌─────────▼───────┐
+                                          │ Gemini 2.0 Flash│
+                                          │   AI Service    │
+                                          └─────────────────┘
+                                                    │
+                                          ┌─────────▼───────┐
+                                          │   ChromaDB      │
+                                          │ Vector Database │
+                                          └─────────────────┘
+                                                    │
+                                          ┌─────────▼───────┐
+                                          │ OpenCV Pipeline │
+                                          │Video Processing │
+                                          └─────────────────┘
 ```
 
-**Windows:**
+---
+
+## 🛠️ Technology Stack
+
+### **Backend Technologies**
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| **Web Framework** | FastAPI | High-performance async API |
+| **AI Model** | Google Gemini 2.0 Flash | Multimodal understanding |
+| **Vector Database** | ChromaDB | Context-aware memory |
+| **Media Processing** | OpenCV + NumPy | Video/image analysis |
+| **Configuration** | Pydantic Settings | Type-safe configuration |
+| **Async Runtime** | Uvicorn + asyncio | Concurrent request handling |
+
+### **Frontend Technologies**
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| **Framework** | React 19.1 | Modern UI components |
+| **Styling** | Tailwind CSS 4.1 | Utility-first styling |
+| **HTTP Client** | Axios | API communication |
+| **Routing** | React Router 7.7 | SPA navigation |
+| **Icons** | Lucide React | Beautiful icons |
+| **Notifications** | React Toastify | User feedback |
+
+---
+
+## 🚀 Quick Start
+
+### **Prerequisites**
+- Python 3.8+ installed
+- Node.js 16+ installed
+- Google Gemini API key(s)
+- Git installed
+
+### **1. Clone Repository**
 ```bash
+git clone https://github.com/kunalverma2512/StreamSightAI.git
+cd StreamSightAI
+```
+
+### **2. Backend Setup**
+```bash
+# Navigate to backend directory
+cd python-backend
+
+# Create virtual environment
 python -m venv venv
-.\venv\Scripts\activate
-```
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
-### 3. Install Dependencies
-
-```bash
+# Install dependencies
 pip install -r requirements.txt
+
+# Configure environment variables
+cp .env.example .env  # Create .env file
+# Add your Gemini API keys to .env file
 ```
 
-### 4. Environment Configuration
-
-Create a `.env` file in the `python-server` directory:
-
+**Environment Configuration (`.env`)**:
 ```env
-# Add your Google Gemini API keys
-# The system will automatically load and rotate all keys with this prefix
-GEMINI_API_KEY_1="AIzaSy...your...first...key"
-GEMINI_API_KEY_2="AIzaSy...your...second...key" 
-GEMINI_API_KEY_3="AIzaSy...your...third...key"
-# Add as many keys as you have for better load distribution
+# Primary API key
+GEMINI_API_KEY=your_primary_api_key_here
+
+# Additional keys for rotation (optional)
+GEMINI_API_KEY_2=your_second_api_key_here
+GEMINI_API_KEY_3=your_third_api_key_here
+
+# Server configuration
+HOST=0.0.0.0
+PORT=9000
+
+# Performance tuning
+MAX_WORKERS=4
+CACHE_SIZE_LIMIT=100
 ```
 
-> **Security Note:** Never commit your `.env` file to version control. Add it to your `.gitignore`.
-
-### 5. Run the Application
-
-From the `python-server` directory:
-
+### **3. Frontend Setup**
 ```bash
+# Navigate to frontend directory
+cd ../frontend
+
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env
+# Update API endpoint in .env if needed
+```
+
+### **4. Run the Application**
+
+**Terminal 1 - Backend:**
+```bash
+cd python-backend
 python main.py
 ```
 
-You should see output similar to:
-
-```
-INFO:     Started server process [12345]
-INFO:     Waiting for application startup.
-INFO:     Starting Multimodal Chat API server...
-INFO:     Server Configuration:
-INFO:        - Host: localhost
-INFO:        - Port: 9000
-INFO:     Uvicorn running on http://localhost:9000
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm run dev
 ```
 
-The API is now available at `http://localhost:9000`
+**Access the application at:** `http://localhost:5173`
 
-## API Endpoints
+---
 
-### Health Check
+## 📡 API Documentation
 
-**Endpoint:** `GET /`
+### **Core Endpoints**
 
-**Description:** Verify service availability
-
+#### **Health Check**
+```http
+GET /
+```
 **Response:**
 ```json
 {
@@ -154,226 +198,279 @@ The API is now available at `http://localhost:9000`
 }
 ```
 
-### Analytics Dashboard
-
-**Endpoint:** `GET /stats`
-
-**Description:** Real-time system statistics and API key performance
-
+#### **System Statistics**
+```http
+GET /api/v1/stats
+```
 **Response:**
 ```json
 {
   "api_key_stats": {
-    "key_1_...w2Do": {
-      "usage_count": 15,
+    "key_1_...abc": {
+      "usage_count": 42,
       "last_error": null,
       "is_current": true
-    },
-    "key_2_...vl6Y": {
-      "usage_count": 12,
-      "last_error": 1678886400.123,
-      "is_current": false
     }
   },
-  "cache_size": 42
+  "cache_size": 15
 }
 ```
 
-### Multimodal Inference
-
-**Endpoint:** `POST /infer`
-
-**Content-Type:** `multipart/form-data`
+#### **Multimodal Chat**
+```http
+POST /api/v1/infer
+Content-Type: multipart/form-data
+```
 
 **Parameters:**
-- `prompt` (string, required): Text question or instruction
-- `video_file` (file, optional): Image or video file for analysis
-- `session_id` (string, optional): Conversation thread identifier
+- `prompt` (string, required): User question or instruction
+- `video_file` (file, optional): Video or image file
+- `session_id` (string, required): Conversation identifier
 
-## Usage Examples
-
-### Text-Only Query
-
+**Example cURL:**
 ```bash
-curl -X POST "http://localhost:9000/infer" \
+curl -X POST "http://localhost:9000/api/v1/infer" \
   -H "accept: text/plain" \
-  -F "prompt=What are the benefits of renewable energy?" \
-  -F "session_id=conversation_123"
+  -F "video_file=@sample_video.mp4" \
+  -F "prompt=What's happening in this video?" \
+  -F "session_id=demo_session_123"
 ```
-
-### Image Analysis
-
-```bash
-curl -X POST "http://localhost:9000/infer" \
-  -H "accept: text/plain" \
-  -F "video_file=@/path/to/image.jpg" \
-  -F "prompt=Describe what you see in this image" \
-  -F "session_id=conversation_123"
-```
-
-### Video Analysis
-
-```bash
-curl -X POST "http://localhost:9000/infer" \
-  -H "accept: text/plain" \
-  -F "video_file=@/path/to/video.mp4" \
-  -F "prompt=What is the main action happening in this clip?" \
-  -F "session_id=conversation_123"
-```
-
-### Context-Aware Follow-up
-
-```bash
-# First message
-curl -X POST "http://localhost:9000/infer" \
-  -F "prompt=Tell me about machine learning" \
-  -F "session_id=ml_discussion"
-
-# Follow-up (will have context from previous message)
-curl -X POST "http://localhost:9000/infer" \
-  -F "prompt=What are some practical applications?" \
-  -F "session_id=ml_discussion"
-```
-
-## Architecture
-
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Client App    │───▶│   FastAPI       │───▶│  Gemini 2.0     │
-│                 │    │   Server        │    │  Flash API      │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-                              │
-                              ▼
-                       ┌─────────────────┐
-                       │   ChromaDB      │
-                       │  Vector Store   │
-                       └─────────────────┘
-                              │
-                              ▼
-                       ┌─────────────────┐
-                       │  Media Pipeline │
-                       │ OpenCV/NumPy    │
-                       └─────────────────┘
-```
-
-## Project Structure
-
-```
-project-root/
-├── python-server/          # Backend API server
-│   ├── main.py            # Application entry point
-│   ├── requirements.txt   # Python dependencies
-│   ├── .env              # Environment variables (create this)
-│   ├── .gitignore        # Git ignore rules
-│   ├── chat_api.log      # Application logs (auto-generated)
-│   └── chroma_db/        # ChromaDB storage (auto-generated)
-│       └── ...
-└── frontend/              # Frontend application
-    └── ...
-```
-
-## Configuration
-
-### Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `GEMINI_API_KEY_*` | Google Gemini API keys | Yes |
-| `HOST` | Server host (default: localhost) | No |
-| `PORT` | Server port (default: 9000) | No |
-| `LOG_LEVEL` | Logging level (default: INFO) | No |
-
-### Supported Media Formats
-
-- **Images:** JPG, JPEG, PNG, GIF, BMP, TIFF
-- **Videos:** MP4, AVI, MOV, WMV, FLV, MKV
-
-## Error Handling
-
-The API implements comprehensive error handling:
-
-- **Rate Limiting:** Automatic API key rotation
-- **Network Issues:** Exponential backoff retry
-- **Invalid Files:** Graceful error messages
-- **API Failures:** Fallback mechanisms
-
-## Performance Optimization
-
-- Asynchronous request processing
-- Thread pool for CPU-intensive tasks
-- Intelligent video frame sampling
-- Vector similarity caching
-- Connection pooling
-
-## Security Considerations
-
-- API key rotation for security
-- Input validation and sanitization
-- File type and size restrictions
-- Rate limiting protection
-- Secure environment variable handling
-
-## Troubleshooting
-
-### Common Issues
-
-**1. API Key Errors**
-```
-Solution: Verify your Gemini API keys in .env file
-```
-
-**2. ChromaDB Initialization**
-```
-Solution: Ensure write permissions in project directory
-```
-
-**3. Media Processing Errors**
-```
-Solution: Check file format and size limitations
-```
-
-**4. Port Already in Use**
-```
-Solution: Change PORT in .env or kill existing process
-```
-
-## Logging
-
-Logs are written to:
-- **Console:** Real-time monitoring
-- **File:** `chat_api.log` for persistent debugging
-
-Log levels: DEBUG, INFO, WARNING, ERROR, CRITICAL
-
-## Deployment
-
-For production deployment:
-
-1. Set up environment variables securely
-2. Configure reverse proxy (nginx/Apache)
-3. Use process manager (systemd/PM2)
-4. Set up monitoring and alerting
-5. Configure SSL/TLS certificates
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Google AI for Gemini 2.0 Flash
-- FastAPI team for the excellent framework
-- ChromaDB for vector database capabilities
-- OpenCV community for media processing tools
 
 ---
 
-**Made with care for the AI community**
+## 🎯 Usage Examples
+
+### **Video Analysis Workflow**
+
+1. **Upload Video + Initial Prompt**
+```javascript
+const formData = new FormData();
+formData.append('video_file', videoFile);
+formData.append('prompt', 'Describe the main activities in this video');
+formData.append('session_id', 'analysis_session_001');
+
+const response = await axios.post('/api/v1/infer', formData);
+```
+
+2. **Follow-up Questions (Context Aware)**
+```javascript
+const followUp = await axios.post('/api/v1/infer', {
+  prompt: 'How many people are visible?',
+  session_id: 'analysis_session_001'  // Same session
+});
+```
+
+3. **Detailed Analysis**
+```javascript
+const detailedAnalysis = await axios.post('/api/v1/infer', {
+  prompt: 'What emotions can you detect?',
+  session_id: 'analysis_session_001'
+});
+```
+
+### **Supported Media Formats**
+
+**Video Formats:**
+- MP4, AVI, MOV, WMV, FLV, MKV, WebM
+
+**Image Formats:**
+- JPG, JPEG, PNG, GIF, BMP, TIFF
+
+**File Size Limits:**
+- Maximum: 100MB per file
+- Recommended: Under 50MB for optimal performance
+
+---
+
+## 🔧 Advanced Configuration
+
+### **Backend Configuration**
+
+**Performance Tuning (`app/core/config.py`):**
+```python
+class Settings(BaseSettings):
+    # API Configuration
+    host: str = "0.0.0.0"
+    port: int = 9000
+    
+    # Performance Settings
+    max_workers: int = 4
+    cache_size_limit: int = 100
+    max_frames: int = 5
+    target_fps: int = 1
+    
+    # Database Settings
+    chroma_db_path: str = "./chroma_db"
+```
+
+**API Key Management:**
+- Supports multiple API keys for load balancing
+- Automatic rotation on rate limits
+- Usage statistics tracking
+- Error recovery mechanisms
+
+### **Frontend Configuration**
+
+**Environment Variables (`.env`):**
+```env
+VITE_API_BASE_URL=http://localhost:9000
+VITE_MAX_FILE_SIZE=104857600  # 100MB
+VITE_SUPPORTED_FORMATS=mp4,avi,mov,jpg,png
+```
+
+**Build Configuration (`vite.config.js`):**
+```javascript
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 5173,
+    host: true
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: true
+  }
+});
+```
+
+---
+
+### **Frontend Deployment**
+
+**Vercel Deployment (`vercel.json`):**
+```json
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ]
+}
+```
+
+
+## 📊 Monitoring & Analytics
+
+
+### **Logging Configuration**
+```python
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('chat_api.log'),
+        logging.StreamHandler()
+    ]
+)
+```
+
+### **Performance Metrics**
+- Average response time
+- Concurrent user handling
+- Memory usage patterns
+- ChromaDB query performance
+
+---
+
+## 🐛 Troubleshooting
+
+### **Common Issues**
+
+**1. API Key Errors**
+```bash
+Error: "No valid Gemini API keys found"
+Solution: Verify GEMINI_API_KEY in .env file
+```
+
+**2. ChromaDB Permission Issues**
+```bash
+Error: "Permission denied: ./chroma_db"
+Solution: Ensure write permissions in project directory
+```
+
+**3. Video Processing Errors**
+```bash
+Error: "Could not extract frames from video"
+Solution: Check file format and install opencv-python
+```
+
+**4. Frontend Connection Issues**
+```bash
+Error: "Network Error"
+Solution: Verify backend is running on correct port
+```
+
+### **Debug Mode**
+Enable detailed logging:
+```python
+# Backend
+logging.getLogger().setLevel(logging.DEBUG)
+
+# Frontend
+VITE_DEBUG=true npm run dev
+```
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+### **Development Setup**
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Make your changes
+4. Add tests if applicable
+5. Commit changes: `git commit -m 'Add amazing feature'`
+6. Push to branch: `git push origin feature/amazing-feature`
+7. Open a Pull Request
+
+### **Code Style**
+- **Backend**: Follow PEP 8 guidelines
+- **Frontend**: Use Prettier and ESLint configurations
+- **Commits**: Use conventional commit messages
+
+### **Testing**
+```bash
+# Backend tests
+python -m pytest
+
+# Frontend tests
+npm run test
+```
+
+---
+
+## 🙏 Acknowledgments
+
+- **Google AI** for Gemini 2.0 Flash API
+- **FastAPI** team for the excellent framework
+- **ChromaDB** for vector database capabilities
+- **OpenCV** community for computer vision tools
+- **React** team for the frontend framework
+- **Vercel** for hosting platform
+- **Open Source Community** for inspiration and support
+
+---
+
+## 📞 Support & Contact
+
+- **Live Demo**: [stream-sight-ai.vercel.app](https://stream-sight-ai.vercel.app)
+- **GitHub Issues**: [Report bugs or request features](https://github.com/kunalverma2512/StreamSightAI/issues)
+- **Documentation**: Check the `/docs` folder for detailed guides
+- **Community**: Join our discussions in GitHub Discussions
+
+---
+
+**Made with ❤️ for the AI Community**
+
+*StreamSightAI - Bringing Intelligence to Visual Content*
