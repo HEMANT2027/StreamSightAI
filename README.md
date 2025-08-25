@@ -98,7 +98,6 @@ graph TB
 | **HTTP Client** | Axios | API communication |
 | **Routing** | React Router 7.7 | SPA navigation |
 | **Icons** | Lucide React | Beautiful icons |
-| **Notifications** | React Toastify | User feedback |
 
 ---
 
