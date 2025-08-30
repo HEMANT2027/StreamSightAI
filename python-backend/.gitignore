@@ -1,0 +1,93 @@
+# ---------------------------
+# Python
+# ---------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.env
+*.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ---------------------------
+# IDEs
+# ---------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ---------------------------
+# Mac / Linux / Windows
+# ---------------------------
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.swp
+
+# ---------------------------
+# Python packages
+# ---------------------------
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
+*.whl
+
+# ---------------------------
+# FastAPI / Web
+# ---------------------------
+__pycache__/
+*.sqlite3
+*.db
+*.db-journal
+
+# ---------------------------
+# Machine Learning / Data
+# ---------------------------
+*.h5
+*.pt
+*.pth
+*.ckpt
+*.sav
+*.joblib
+*.npy
+*.npz
+*.pkl
+*.onnx
+*.log
+data/
+datasets/
+outputs/
+# models/
+cache/
+tmp/
+*.ipynb_checkpoints
+
+# ---------------------------
+# RAG / NLP specific
+# ---------------------------
+embeddings/
+vectorstores/
+retriever/
+faiss.index
+*.faiss
+*.jsonl
+*.parquet
+
+# ---------------------------
+# Environment / Config
+# ---------------------------
+.env
+.env.*
+config.json
+*.secret
+credentials.json

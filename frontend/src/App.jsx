@@ -1,11 +1,11 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom"
-import MainLayout from './components/layout/mainLayout'
 import Welcome from './pages/Welcome/Welcome'
 import Demo from './pages/Welcome/Demo'
 import Features from './pages/Welcome/Features'
 import Chat from './pages/Chatbot/Chat'
 import PageNotFound from './pages/Welcome/PageNotFound'
+import MainLayout from './components/layout/MainLayout'
 
 const App = () => {
   return (
